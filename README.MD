@@ -5,7 +5,7 @@
 ## Установка
 
 ```sh
-composer require paveldanilin/php-tinkoff-payment
+composer require gamsh/php-tinkoff-payment
 ```
 
 ## Реализованные API

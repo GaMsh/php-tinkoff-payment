@@ -17,7 +17,7 @@
 	},
     "require": {
         "php": ">=8.3",
-		"gamsh/rest-client": "@dev"
+		"gamsh/rest-client": "^2.0"
     },
 	"require-dev": {
 		"phpstan/phpstan": "1.10.*",
