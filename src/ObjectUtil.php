@@ -2,7 +2,8 @@
 
 namespace Pada\Tinkoff\Payment;
 
-final class ObjectUtil {
+final class ObjectUtil
+{
 
     private function __construct()
     {

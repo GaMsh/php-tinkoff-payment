@@ -8,8 +8,12 @@ namespace Pada\Tinkoff\Payment\Contract;
 interface ChargeResultInterface extends ResultInterface
 {
     public function getTerminalKey(): string;
+
     public function getAmount(): int;
+
     public function getOrderId(): string;
+
     public function getStatus(): string;
+
     public function getPaymentId(): int;
 }

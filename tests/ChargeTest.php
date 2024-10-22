@@ -24,7 +24,7 @@ class ChargeTest extends TestCase
                     "TerminalKey" => "TestB",
                     "Status" => "CONFIRMED",
                     "PaymentId" => "10063",
-                    "OrderId" =>  "21054",
+                    "OrderId" => "21054",
                 ]
             ],
         ]);

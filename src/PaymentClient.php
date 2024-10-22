@@ -27,8 +27,8 @@ use Pada\Tinkoff\Payment\Normalizer\CancelPaymentNormalizer;
 use Pada\Tinkoff\Payment\Normalizer\ChargeNormalizer;
 use Pada\Tinkoff\Payment\Normalizer\CheckOrderNormalizer;
 use Pada\Tinkoff\Payment\Normalizer\ConfirmNormalizer;
-use Pada\Tinkoff\Payment\Normalizer\NewPaymentNormalizer;
 use Pada\Tinkoff\Payment\Normalizer\GetStateNormalizer;
+use Pada\Tinkoff\Payment\Normalizer\NewPaymentNormalizer;
 use Pada\Tinkoff\Payment\Normalizer\ResendNormalizer;
 use RestClient\DefaultJsonRestClient;
 

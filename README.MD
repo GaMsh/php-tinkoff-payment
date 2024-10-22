@@ -9,7 +9,9 @@ composer require gamsh/php-tinkoff-payment
 ```
 
 ## Реализованные API
+
 #### Платежи
+
 - [Создание платежа](https://www.tinkoff.ru/kassa/develop/api/payments/init-description/)
 - [Отмена платежа](https://www.tinkoff.ru/kassa/develop/api/payments/cancel-description/)
 - [Получение статуса платежа](https://www.tinkoff.ru/kassa/develop/api/payments/getstate-description/)
@@ -18,6 +20,7 @@ composer require gamsh/php-tinkoff-payment
 - [Подтверждение платежа](https://www.tinkoff.ru/kassa/develop/api/payments/confirm-description/)
 
 #### Автоплатежи
+
 - [Автоплатеж](https://www.tinkoff.ru/kassa/develop/api/autopayments/charge-description/)
 
 ## Примеры
@@ -62,7 +65,7 @@ $payment = newPayment()
     ->orderId('33101')
     ->oneStep()
     ->receipt(newReceipt()
-        ->email('pavel.k.danilin@gmail.com')
+        ->email('fake@fake.org')
         ->taxationOSN()
         ->addItem(newReceiptItem()
             ->name('Кружка')
@@ -92,7 +95,7 @@ if ($result->isSuccess()) {
 
 ```php
 /** @var CancelResultInterface $result */
-$result = $paymentClient->cancel(1645861116);
+$result = $paymentClient->cancel(1647427416);
 
 if ($result->isSuccess()) {
     print 'PaymentId: ' . $result->getPaymentId() . ' [' . $result->getStatus() . "]\n";
@@ -126,7 +129,7 @@ if ($result->isSuccess()) {
 
 ```php
 /** @var CheckOrderResultInterface $result */
-$result = $paymentClient->checkOrder('333335556669');
+$result = $paymentClient->checkOrder('34532135669');
 
 if ($result->isSuccess()) {
     print 'OrderID: ' . $result->getOrderId() . "\n";
@@ -160,7 +163,6 @@ if ($result->isSuccess()) {
 }
 ```
 
-
 ### Автоплатежи
 
 #### Родительский платеж
@@ -173,8 +175,8 @@ if ($result->isSuccess()) {
 
 ```php
 $charge = new Charge();
-$charge->setPaymentId(10063);
-$charge->setRebillId(1234);
+$charge->setPaymentId(10942);
+$charge->setRebillId(4567);
 $result = $paymentClient->charge($charge);
 
 if ($result->isSuccess()) {

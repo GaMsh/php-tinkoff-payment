@@ -10,7 +10,7 @@ final class ConfirmNormalizer implements NormalizerInterface
     use SetterTrait;
     use ReceiptNormalizerTrait;
 
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize(mixed $object, string $format = null, array $context = []): float|int|bool|\ArrayObject|array|string|null
     {
         /** @var ConfirmInterface $confirm */
         $confirm = $object;
@@ -23,7 +23,7 @@ final class ConfirmNormalizer implements NormalizerInterface
 
         $this->setIfNotNull('IP', $confirm->getIp(), $data);
         $this->setIfNotNull('Amount', $confirm->getAmount(), $data);
-        $this->setIfNotNull('Receipt', function () use($confirm) {
+        $this->setIfNotNull('Receipt', function () use ($confirm) {
             if (null === $confirm->getReceipt()) {
                 return null;
             }
@@ -33,8 +33,13 @@ final class ConfirmNormalizer implements NormalizerInterface
         return $data;
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $data instanceof ConfirmInterface;
+    }
+
+    public function getSupportedTypes(?string $format): array
+    {
+        // TODO: Implement getSupportedTypes() method.
     }
 }

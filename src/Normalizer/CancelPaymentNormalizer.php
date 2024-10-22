@@ -10,13 +10,7 @@ final class CancelPaymentNormalizer implements NormalizerInterface
     use SetterTrait;
     use ReceiptNormalizerTrait;
 
-    /**
-     * @param mixed $object
-     * @param string|null $format
-     * @param array $context
-     * @return array
-     */
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize(mixed $object, string $format = null, array $context = []): float|int|bool|\ArrayObject|array|string|null
     {
         /** @var CancelInterface $cancelPayment */
         $cancelPayment = $object;
@@ -29,7 +23,7 @@ final class CancelPaymentNormalizer implements NormalizerInterface
 
         $this->setIfNotNull('IP', $cancelPayment->getIp(), $data);
         $this->setIfNotNull('Amount', $cancelPayment->getAmount(), $data);
-        $this->setIfNotNull('Receipt', function () use($cancelPayment) {
+        $this->setIfNotNull('Receipt', function () use ($cancelPayment) {
             if (null === $cancelPayment->getReceipt()) {
                 return null;
             }
@@ -39,13 +33,13 @@ final class CancelPaymentNormalizer implements NormalizerInterface
         return $data;
     }
 
-    /**
-     * @param mixed $data
-     * @param string|null $format
-     * @return bool
-     */
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $data instanceof CancelInterface;
+    }
+
+    public function getSupportedTypes(?string $format): array
+    {
+        // TODO: Implement getSupportedTypes() method.
     }
 }

@@ -18,7 +18,7 @@ interface NewPaymentInterface extends TerminalKeyAwareInterface, TokenAwareInter
     public function getAmount(): int;
 
     /**
-     * 	Идентификатор заказа в системе продавца
+     *    Идентификатор заказа в системе продавца
      * @return string
      */
     public function getOrderId(): string;
@@ -77,7 +77,7 @@ interface NewPaymentInterface extends TerminalKeyAwareInterface, TokenAwareInter
     public function getIp(): ?string;
 
     /**
-     * 	Описание заказа
+     *    Описание заказа
      * @return string|null
      */
     public function getDescription(): ?string;

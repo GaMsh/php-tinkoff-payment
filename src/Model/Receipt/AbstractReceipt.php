@@ -130,7 +130,7 @@ abstract class AbstractReceipt implements ReceiptInterface
 
     public function addItem(AbstractItem $item): void
     {
-        if (\in_array($item->getName(), $this->itemNames, true)){
+        if (\in_array($item->getName(), $this->itemNames, true)) {
             return;
         }
         $this->items[] = $item;

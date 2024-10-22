@@ -11,13 +11,7 @@ final class NewPaymentNormalizer implements NormalizerInterface
     use SetterTrait;
     use ReceiptNormalizerTrait;
 
-    /**
-     * @param mixed $object
-     * @param string|null $format
-     * @param array $context
-     * @return array
-     */
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize(mixed $object, string $format = null, array $context = []): float|int|bool|\ArrayObject|array|string|null
     {
         /** @var NewPaymentInterface $initPayment */
         $initPayment = $object;
@@ -42,21 +36,21 @@ final class NewPaymentNormalizer implements NormalizerInterface
             $this->setIfNotNull('CustomerKey', $initPayment->getCustomerKey(), $data);
         }
 
-        $this->setIfNotNull('RedirectDueDate', function () use($initPayment) {
+        $this->setIfNotNull('RedirectDueDate', function () use ($initPayment) {
             if (null === $initPayment->getRedirectDueDate()) {
                 return null;
             }
             return $initPayment->getRedirectDueDate()->format(DateTimeInterface::ATOM);
         }, $data);
 
-        $this->setIfNotNull('Receipt', function () use($initPayment) {
+        $this->setIfNotNull('Receipt', function () use ($initPayment) {
             if (null === $initPayment->getReceipt()) {
                 return null;
             }
             return $this->normalizeReceipt($initPayment->getReceipt());
         }, $data);
 
-        $this->setIfNotNull('DATA', function () use($initPayment) {
+        $this->setIfNotNull('DATA', function () use ($initPayment) {
             if (null === $initPayment->getData()) {
                 return null;
             }
@@ -66,13 +60,13 @@ final class NewPaymentNormalizer implements NormalizerInterface
         return $data;
     }
 
-    /**
-     * @param mixed $data
-     * @param string|null $format
-     * @return bool
-     */
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $data instanceof NewPaymentInterface;
+    }
+
+    public function getSupportedTypes(?string $format): array
+    {
+        // TODO: Implement getSupportedTypes() method.
     }
 }

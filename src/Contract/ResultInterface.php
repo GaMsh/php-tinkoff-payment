@@ -5,7 +5,7 @@ namespace Pada\Tinkoff\Payment\Contract;
 interface ResultInterface
 {
     /**
-     * 	Краткое описание ошибки
+     *    Краткое описание ошибки
      * @return string|null
      */
     public function getMessage(): ?string;

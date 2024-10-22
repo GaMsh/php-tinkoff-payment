@@ -42,7 +42,7 @@ $newPayment = newPayment()
             ->taxNone()
             ->build())
         ->build())
-->build();
+    ->build();
 
 // ------------------------------------------------------------------------------------------------
 // 4 - Invoke API and process response

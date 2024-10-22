@@ -8,8 +8,11 @@ namespace Pada\Tinkoff\Payment\Contract;
 interface ReceiptInterface
 {
     public function getFfdVersion(): string;
+
     public function getEmail(): ?string;
+
     public function getPhone(): ?string;
+
     public function getTaxation(): string;
 
     /**

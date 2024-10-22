@@ -30,7 +30,8 @@ function newReceiptItem(): ItemBuilderFFD105
     return new ItemBuilderFFD105();
 }
 
-function newCharge(int $paymentId, int $rebillId): Charge {
+function newCharge(int $paymentId, int $rebillId): Charge
+{
     $chargeModel = new Charge();
     $chargeModel->setPaymentId($paymentId);
     $chargeModel->setRebillId($rebillId);

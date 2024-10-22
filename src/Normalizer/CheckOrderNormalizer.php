@@ -10,15 +10,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 final class CheckOrderNormalizer implements NormalizerInterface, DenormalizerInterface
 {
-    // NORMALIZE
-
-    /**
-     * @param mixed $object
-     * @param string|null $format
-     * @param array $context
-     * @return array
-     */
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize(mixed $object, string $format = null, array $context = []): float|int|bool|\ArrayObject|array|string|null
     {
         /** @var CheckOrderInterface $checkOrder */
         $checkOrder = $object;
@@ -30,26 +22,15 @@ final class CheckOrderNormalizer implements NormalizerInterface, DenormalizerInt
         ];
     }
 
-    /**
-     * @param mixed $data
-     * @param string|null $format
-     * @return bool
-     */
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization(mixed $data, $format = null, array $context = []): bool
     {
         return $data instanceof CheckOrderInterface;
     }
 
-    // DENORMALIZE
-
     /**
-     * @param mixed $data
-     * @param string $type
-     * @param string|null $format
-     * @param array $context
-     * @return CheckOrderResult
+     * @ret CheckOrderResult
      */
-    public function denormalize($data, $type, $format = null, array $context = [])
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
     {
         $checkOrderResponse = new CheckOrderResult();
 
@@ -77,14 +58,13 @@ final class CheckOrderNormalizer implements NormalizerInterface, DenormalizerInt
         return $checkOrderResponse;
     }
 
-    /**
-     * @param mixed $data
-     * @param string $type
-     * @param string|null $format
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
     {
         return CheckOrderResult::class === $type;
+    }
+
+    public function getSupportedTypes(?string $format): array
+    {
+        // TODO: Implement getSupportedTypes() method.
     }
 }

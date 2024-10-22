@@ -7,13 +7,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 final class ResendNormalizer implements NormalizerInterface
 {
-    /**
-     * @param mixed $object
-     * @param string|null $format
-     * @param array $context
-     * @return array
-     */
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize(mixed $object, string $format = null, array $context = []): float|int|bool|\ArrayObject|array|string|null
     {
         /** @var Resend $resend */
         $resend = $object;
@@ -23,13 +17,13 @@ final class ResendNormalizer implements NormalizerInterface
         ];
     }
 
-    /**
-     * @param mixed $data
-     * @param string|null $format
-     * @return bool
-     */
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $data instanceof Resend;
+    }
+
+    public function getSupportedTypes(?string $format): array
+    {
+        // TODO: Implement getSupportedTypes() method.
     }
 }
