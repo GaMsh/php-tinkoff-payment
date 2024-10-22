@@ -9,7 +9,7 @@ final class GetStateNormalizer implements NormalizerInterface
 {
     use SetterTrait;
 
-    public function normalize(mixed $object, string $format = null, array $context = []): float|int|bool|\ArrayObject|array|string|null
+    public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         /** @var GetStateInterface $state */
         $state = $object;
@@ -25,13 +25,15 @@ final class GetStateNormalizer implements NormalizerInterface
         return $data;
     }
 
-    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof GetStateInterface;
     }
 
     public function getSupportedTypes(?string $format): array
     {
-        // TODO: Implement getSupportedTypes() method.
+        return [
+            GetStateInterface::class => true,
+        ];
     }
 }

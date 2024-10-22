@@ -10,7 +10,7 @@ final class CancelPaymentNormalizer implements NormalizerInterface
     use SetterTrait;
     use ReceiptNormalizerTrait;
 
-    public function normalize(mixed $object, string $format = null, array $context = []): float|int|bool|\ArrayObject|array|string|null
+    public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         /** @var CancelInterface $cancelPayment */
         $cancelPayment = $object;
@@ -33,13 +33,15 @@ final class CancelPaymentNormalizer implements NormalizerInterface
         return $data;
     }
 
-    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof CancelInterface;
     }
 
     public function getSupportedTypes(?string $format): array
     {
-        // TODO: Implement getSupportedTypes() method.
+        return [
+            CancelInterface::class => true,
+        ];
     }
 }

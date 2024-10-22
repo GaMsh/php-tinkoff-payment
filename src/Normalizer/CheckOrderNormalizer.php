@@ -10,7 +10,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 final class CheckOrderNormalizer implements NormalizerInterface, DenormalizerInterface
 {
-    public function normalize(mixed $object, string $format = null, array $context = []): float|int|bool|\ArrayObject|array|string|null
+    public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         /** @var CheckOrderInterface $checkOrder */
         $checkOrder = $object;
@@ -22,7 +22,7 @@ final class CheckOrderNormalizer implements NormalizerInterface, DenormalizerInt
         ];
     }
 
-    public function supportsNormalization(mixed $data, $format = null, array $context = []): bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof CheckOrderInterface;
     }
@@ -30,7 +30,7 @@ final class CheckOrderNormalizer implements NormalizerInterface, DenormalizerInt
     /**
      * @ret CheckOrderResult
      */
-    public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         $checkOrderResponse = new CheckOrderResult();
 
@@ -58,13 +58,15 @@ final class CheckOrderNormalizer implements NormalizerInterface, DenormalizerInt
         return $checkOrderResponse;
     }
 
-    public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return CheckOrderResult::class === $type;
     }
 
     public function getSupportedTypes(?string $format): array
     {
-        // TODO: Implement getSupportedTypes() method.
+        return [
+            CheckOrderInterface::class => true,
+        ];
     }
 }
