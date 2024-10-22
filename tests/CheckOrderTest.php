@@ -66,6 +66,6 @@ class CheckOrderTest extends TestCase
 
         $this->assertTrue($checkOrderResult->isSuccess());
         $this->assertCount(3, $checkOrderResult->getPayments());
-        $this->assertEquals('REJECTED', $checkOrderResult->getPayments()[0]->getStatus());
+        $this->assertEquals('REJECTED', $checkOrderResult->getPayments()[0]['Status']);
     }
 }
