@@ -44,7 +44,7 @@ class PaymentInitTest extends TestCase
             ->orderId('1234')
             ->oneStep()
             ->receipt(newReceipt()
-                ->email('pavel.k.danilin@gmail.com')
+                ->email('test@fake.org')
                 ->taxationOSN()
                 ->addItem(newReceiptItem()
                     ->name('Кружка')
